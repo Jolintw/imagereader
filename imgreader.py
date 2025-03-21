@@ -81,6 +81,12 @@ class Imgreader:
         originx = ratiox * (xlim[1] - xlim[0]) + xlim[0]
         originy = ratioy * (ylim[1] - ylim[0]) + ylim[0]
         return originx, originy
+    
+    def originalxy_to_ratioxy(self, originx, originy, original_xlim = None, original_ylim = None):
+        xlim, ylim = self.set_original_limit(original_xlim, original_ylim)
+        ratiox = (originx - xlim[0]) / (xlim[1] - xlim[0])
+        ratioy = (originy - ylim[0]) / (ylim[1] - ylim[0])
+        return ratiox, ratioy
 
     def show(self):
         plt.imshow(self.im)
